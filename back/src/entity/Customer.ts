@@ -2,16 +2,22 @@ import { Entity, ObjectIdColumn, Column } from "typeorm";
 import { ObjectId } from "mongodb";
 
 @Entity()
-export class User {
+export class Customer {
   @ObjectIdColumn()
   _id: ObjectId;
 
   @Column()
-  firstName: string;
+  name: string;
 
   @Column()
-  lastName: string;
+  email: string;
 
   @Column()
-  age: number;
+  phone: string;
+
+  @Column()
+  address: string;
+	
+	@Column()
+  cpf: string;
 }
