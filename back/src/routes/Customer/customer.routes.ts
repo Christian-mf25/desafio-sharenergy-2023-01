@@ -7,11 +7,11 @@ import {
   updateCustomerController,
 } from "../../controller";
 import validateShape from "../../middlewares/validateShape.middleware";
-import userUpdateShape from "../../shapes";
+import { userUpdateShape, customerShape } from "../../shapes";
 
 const routesCustomer = Router();
 
-routesCustomer.post("", createCustomerController);
+routesCustomer.post("", validateShape(customerShape), createCustomerController);
 routesCustomer.get("", getAllCustomerController);
 routesCustomer.get("/:email", getOneCustomerController);
 routesCustomer.patch(
