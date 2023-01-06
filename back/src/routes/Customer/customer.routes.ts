@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import {
   createCustomerController,
   deleteCustomerController,
@@ -6,12 +7,12 @@ import {
   getOneCustomerController,
   updateCustomerController,
 } from "../../controller";
-import validateShape from "../../middlewares/validateShape.middleware";
 import { userUpdateShape, customerShape } from "../../shapes";
+import { checkDuplicateCustomer, validateShape } from "../../middlewares";
 
 const routesCustomer = Router();
 
-routesCustomer.post("", validateShape(customerShape), createCustomerController);
+routesCustomer.post("", checkDuplicateCustomer,validateShape(customerShape), createCustomerController);
 routesCustomer.get("", getAllCustomerController);
 routesCustomer.get("/:email", getOneCustomerController);
 routesCustomer.patch(
