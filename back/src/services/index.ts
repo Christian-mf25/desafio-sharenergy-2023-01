@@ -1,3 +1,4 @@
 import ErrorHandler from "./errorHandler.service";
+import makeTitle from "./makeTitle";
 
-export default ErrorHandler;
+export { ErrorHandler, makeTitle };
