@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { DeleteResult } from "typeorm";
 
 import { CustomerRepository } from "../../repository";
-import ErrorHandler from "../../services";
+import { ErrorHandler } from "../../utils";
 
 const deleteCustomerController = async (req: Request, res: Response) => {
   try {
@@ -14,8 +14,8 @@ const deleteCustomerController = async (req: Request, res: Response) => {
     }
 
     return res.status(204).json();
-  } catch (err) {
-    return res.status(err.statusCode).json({ error: err.message });
+  } catch (e) {
+    return res.status(e.statusCode).json({ error: e.message });
   }
 };
 

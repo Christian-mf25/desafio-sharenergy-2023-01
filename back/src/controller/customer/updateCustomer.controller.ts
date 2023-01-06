@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import { CustomerRepository } from "../../repository";
-import ErrorHandler from "../../services";
+import { ErrorHandler } from "../../utils";
 
 const updateCustomerController = async (req: Request, res: Response) => {
   try {
@@ -18,8 +18,8 @@ const updateCustomerController = async (req: Request, res: Response) => {
       req.params.email
     );
     return res.status(200).json(customer);
-  } catch (err) {
-    return res.status(err.statusCode).json({ error: err.message });
+  } catch (e) {
+    return res.status(e.statusCode).json({ error: e.message });
   }
 };
 
