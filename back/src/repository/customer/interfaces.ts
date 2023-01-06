@@ -18,6 +18,8 @@ interface ICustomerRepo {
   saveCustomer: (customer: ICustomer) => Promise<ICustomer>;
   findCustomers: () => Promise<ICustomer[]>;
   findOneCustomer: (email: string) => Promise<ICustomer>;
+	findByPhone: (phone: string) => Promise<ICustomer>;
+	findByCpf: (cpf: string) => Promise<ICustomer>;
   updateCustomer: (
     dataCustomer: IdataUpdate,
     update: IdataUpdate
