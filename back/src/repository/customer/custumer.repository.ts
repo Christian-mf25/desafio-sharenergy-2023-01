@@ -1,7 +1,7 @@
 import { Repository, getRepository } from "typeorm";
 
 import { Customer } from "../../entity/Customer";
-import { ICustomer, ICustomerRepo } from "./interfaces";
+import { ICustomer, ICustomerRepo, IdataUpdate } from "./interfaces";
 
 class CustomerRepository implements ICustomerRepo {
   private ormRepository: Repository<Customer>;
@@ -19,6 +19,9 @@ class CustomerRepository implements ICustomerRepo {
     await this.ormRepository.findOne({
       where: { email },
     });
+
+  deleteCustomer = async (dataCustomer: IdataUpdate) =>
+    await this.ormRepository.delete(dataCustomer);
 }
 
 export { CustomerRepository, ICustomer };
