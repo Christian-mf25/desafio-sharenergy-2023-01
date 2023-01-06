@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { DeleteResult } from "typeorm";
+import { DeleteResult, UpdateResult } from "typeorm";
 
 interface ICustomer {
   _id: ObjectId;
@@ -18,6 +18,10 @@ interface ICustomerRepo {
   saveCustomer: (customer: ICustomer) => Promise<ICustomer>;
   findCustomers: () => Promise<ICustomer[]>;
   findOneCustomer: (email: string) => Promise<ICustomer>;
+  updateCustomer: (
+    dataCustomer: IdataUpdate,
+    update: IdataUpdate
+  ) => Promise<UpdateResult>;
   deleteCustomer: (dataCustomer: IdataUpdate) => Promise<DeleteResult>;
 }
 

@@ -20,6 +20,8 @@ class CustomerRepository implements ICustomerRepo {
       where: { email },
     });
 
+	updateCustomer = async (dataCustomer: IdataUpdate, update: IdataUpdate) => await this.ormRepository.update(dataCustomer, update)
+
   deleteCustomer = async (dataCustomer: IdataUpdate) =>
     await this.ormRepository.delete(dataCustomer);
 }
