@@ -14,6 +14,11 @@ class CustomerRepository implements ICustomerRepo {
     await this.ormRepository.save(customer);
 
   findCustomers = async () => await this.ormRepository.find();
+
+  findOneCustomer = async (email) =>
+    await this.ormRepository.findOne({
+      where: { email },
+    });
 }
 
 export { CustomerRepository, ICustomer };

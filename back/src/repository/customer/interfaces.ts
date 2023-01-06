@@ -12,6 +12,7 @@ interface ICustomer {
 interface ICustomerRepo {
   saveCustomer: (customer: ICustomer) => Promise<ICustomer>;
   findCustomers: () => Promise<ICustomer[]>;
+  findOneCustomer: (email: string) => Promise<ICustomer>;
 }
 
 export { ICustomer, ICustomerRepo };
