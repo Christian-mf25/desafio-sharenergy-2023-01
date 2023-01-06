@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import { CustomerRepository } from "../../repository";
 
 const getOneCustomerController = async (req: Request, res: Response) => {

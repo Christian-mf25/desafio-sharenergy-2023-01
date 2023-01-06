@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createCustomerController,
+  deleteCustomerController,
   getAllCustomerController,
   getOneCustomerController,
 } from "../../controller";
@@ -11,6 +12,6 @@ routesCustomer.post("", createCustomerController);
 routesCustomer.get("", getAllCustomerController);
 routesCustomer.get("/:email", getOneCustomerController);
 routesCustomer.patch("");
-routesCustomer.delete("");
+routesCustomer.delete("/:email", deleteCustomerController);
 
 export default routesCustomer;
