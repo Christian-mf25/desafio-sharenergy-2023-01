@@ -6,18 +6,18 @@ export class Customer {
   @ObjectIdColumn()
   _id: ObjectId;
 
-  @Column()
+  @Column({ length: 128 })
   name: string;
 
-  @Column()
+  @Column({ length: 128, unique: true })
   email: string;
 
-  @Column()
+  @Column({ length: 14, unique: true })
   phone: string;
 
-  @Column()
+  @Column({ length: 255 })
   address: string;
-	
-	@Column()
+
+  @Column({ length: 14, unique: true })
   cpf: string;
 }
