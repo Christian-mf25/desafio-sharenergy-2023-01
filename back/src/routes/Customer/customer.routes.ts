@@ -1,11 +1,15 @@
 import { Router } from "express";
-import { createCustomerController, getAllCustomerController } from "../../controller";
+import {
+  createCustomerController,
+  getAllCustomerController,
+  getOneCustomerController,
+} from "../../controller";
 
 const routesCustomer = Router();
 
 routesCustomer.post("", createCustomerController);
 routesCustomer.get("", getAllCustomerController);
-routesCustomer.get("");
+routesCustomer.get("/:email", getOneCustomerController);
 routesCustomer.patch("");
 routesCustomer.delete("");
 
