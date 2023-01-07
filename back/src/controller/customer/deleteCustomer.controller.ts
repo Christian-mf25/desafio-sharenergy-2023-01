@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { DeleteResult } from "typeorm";
 
-import { CustomerRepository } from "../../repository";
+import { CustomerRepository } from "../../repositories";
 import { ErrorHandler } from "../../utils";
 
 const deleteCustomerController = async (req: Request, res: Response) => {

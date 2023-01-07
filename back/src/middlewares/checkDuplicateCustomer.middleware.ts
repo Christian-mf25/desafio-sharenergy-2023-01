@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { CustomerRepository } from "../repository";
+
+import { CustomerRepository } from "../repositories";
 import { ErrorHandler } from "../utils";
 
 const checkDuplicateCustomer = async (
