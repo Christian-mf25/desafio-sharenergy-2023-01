@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { CustomerRepository } from "../../repository";
+import { CustomerRepository } from "../../repositories";
 import { ErrorHandler } from "../../utils";
 
 const updateCustomerController = async (req: Request, res: Response) => {

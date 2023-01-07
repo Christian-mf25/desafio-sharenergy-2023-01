@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 
-import { CustomerRepository, ICustomer } from "../../repository";
+import { CustomerRepository, ICustomer } from "../../repositories";
 
 const createCustomerController = async (req: Request, res: Response) => {
   const customer: ICustomer = await new CustomerRepository().saveCustomer(
-    req.body
+    req.validated
   );
 
   return res.status(201).json(customer);

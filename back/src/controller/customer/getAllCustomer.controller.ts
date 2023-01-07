@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { CustomerRepository, ICustomer } from "../../repository";
+import { CustomerRepository, ICustomer } from "../../repositories";
 
 const getAllCustomerController = async (_: Request, res: Response) => {
   const customer: ICustomer[] = await new CustomerRepository().findCustomers();

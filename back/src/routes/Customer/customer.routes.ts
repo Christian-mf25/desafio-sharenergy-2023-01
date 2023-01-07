@@ -6,7 +6,7 @@ import {
   getAllCustomerController,
   getOneCustomerController,
   updateCustomerController,
-} from "../../controller";
+} from "../../controller/customer";
 import { userUpdateShape, customerShape } from "../../shapes";
 import { checkDuplicateCustomer, validateShape } from "../../middlewares";
 
