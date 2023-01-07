@@ -9,7 +9,7 @@ const checkDuplicateCustomer = async (
   next: NextFunction
 ): Promise<Response | void> => {
   try {
-    const email = req.body.email;
+    const email: string = req.body.email.toLowerCase();
     const phone = req.body.phone;
     const cpf = req.body.cpf;
 
