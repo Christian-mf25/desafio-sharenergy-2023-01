@@ -2,6 +2,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useCustomers } from "./Providers/Customers/customer.provider";
+// import { useUser } from "./Providers/Users/user.provider";
 
 function App() {
   const {
@@ -12,6 +13,13 @@ function App() {
     oneCustomer,
     getOneCustomer,
   } = useCustomers();
+
+  // const { login, logout } = useUser();
+
+  // const share = {
+  //   username: "desafiosharenergy",
+  //   password: "sh@r3n3rgy",
+  // };
 
   const newCustomer = {
     name: "Front end",
