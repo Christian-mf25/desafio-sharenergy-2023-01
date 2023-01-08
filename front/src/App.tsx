@@ -1,33 +1,47 @@
-import React, { useEffect, useState } from "react";
-import API from "./Services/api";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-interface User {
-  _id: string;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  cpf: string;
-}
+import { useCustomers } from "./Providers/Customers/customer.provider";
 
 function App() {
-  const [users, setUsers] = useState<User[]>([] as User[]);
+  const {
+    customers,
+    createCustomer,
+    deleteCustomer,
+    updateCustomer,
+    oneCustomer,
+    getOneCustomer,
+  } = useCustomers();
 
-  useEffect(() => {
-    const getAllUsers = async () => {
-      let usersArray = await API.get("/customers");
-      console.log(usersArray);
-      setUsers(usersArray.data);
-    };
-    getAllUsers();
-  }, []);
+  const newCustomer = {
+    name: "Front end",
+    email: "front_end@eemail.com",
+    phone: "(32)6548-9299",
+    address: "Rua dos Bobos",
+    cpf: "987.431.436-33",
+  };
+
+  const newData = {
+    name: "Back end",
+  };
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div>
         <h1>Usuários</h1>
         <ul>
-          {users.map((user) => (
+          {customers.map((user) => (
             <>
               <li>{user.name}</li>
               <li>{user.email}</li>
@@ -37,6 +51,32 @@ function App() {
             </>
           ))}
         </ul>
+
+        <button onClick={() => createCustomer(newCustomer)}>
+          criar novo cliente
+        </button>
+        <br />
+        <button onClick={() => deleteCustomer(newCustomer.email)}>
+          Apagar cliente
+        </button>
+        <br />
+        <button onClick={() => updateCustomer(newData, newCustomer.email)}>
+          Atualizar cliente
+        </button>
+        <br />
+        <button onClick={() => getOneCustomer(newCustomer.email)}>
+          pegar um cliente
+        </button>
+        {oneCustomer && (
+          <>
+            <h4>nome</h4>
+            <h6>{oneCustomer.name}</h6>
+            <h4>telefone</h4>
+            <h6>{oneCustomer.phone}</h6>
+            <h4>endereço</h4>
+            <h6>{oneCustomer.address} </h6>
+          </>
+        )}
       </div>
     </>
   );
