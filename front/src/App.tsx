@@ -2,6 +2,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useCustomers } from "./Providers/Customers/customer.provider";
+import Router from "./Routes";
 // import { useUser } from "./Providers/Users/user.provider";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         draggable
         pauseOnHover
       />
+      <Router />
       <div>
         <h1>Usuários</h1>
         <ul>
