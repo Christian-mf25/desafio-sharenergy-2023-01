@@ -1,25 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import API from "./Services/api";
+
+interface User {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  cpf: string;
+}
 
 function App() {
+  const [users, setUsers] = useState<User[]>([] as User[]);
+
+  useEffect(() => {
+    const getAllUsers = async () => {
+      let usersArray = await API.get("/customers");
+      console.log(usersArray);
+      setUsers(usersArray.data);
+    };
+    getAllUsers();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+        <h1>Usuários</h1>
+        <ul>
+          {users.map((user) => (
+            <>
+              <li>{user.name}</li>
+              <li>{user.email}</li>
+              <li>{user.phone}</li>
+              <li>{user.address}</li>
+              <li>{user.cpf}</li>
+            </>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 
